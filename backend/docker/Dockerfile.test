@@ -1,0 +1,19 @@
+# Backend test image: base + dev deps, run pytest
+FROM python:3.11-slim
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y gcc && rm -rf /var/lib/apt/lists/*
+
+COPY requirements/base.txt requirements/
+COPY requirements/dev.txt requirements/
+RUN pip install --no-cache-dir -r requirements/base.txt -r requirements/dev.txt
+
+COPY . .
+
+ENV PYTHONPATH=/app
+ENV DATABASE_URL=sqlite+aiosqlite:///:memory:
+ENV RATE_LIMIT_ENABLED=false
+ENV API_KEY_ENABLED=false
+
+CMD ["pytest", "tests/unit", "tests/integration", "-m", "not slow", "-v", "--tb=short"]

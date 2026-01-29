@@ -1,0 +1,42 @@
+# Core framework
+fastapi>=0.104
+uvicorn[standard]>=0.24
+
+# Database
+sqlalchemy>=2.0,<2.1
+asyncpg>=0.29
+aiosqlite>=0.19
+
+# Validation & settings
+pydantic[email]>=2.5
+pydantic-settings>=2.1
+
+# Data & analytics
+pandas>=2.1
+numpy>=1.26
+
+# HTTP client
+httpx>=0.25
+
+# Environment
+python-dotenv>=1.0
+
+# Background jobs
+apscheduler>=3.10
+
+# Caching & compression
+redis>=5.0
+
+# Migrations
+alembic>=1.12
+
+# Auth (bcrypt<4.1 for passlib compatibility: 4.1+ removed __about__)
+passlib[bcrypt]>=1.7
+bcrypt>=4.0,<4.1
+python-jose[cryptography]>=3.3
+pyotp>=2.9
+
+# Observability
+structlog>=24.1
+prometheus-client>=0.20
+sentry-sdk[fastapi]>=1.39

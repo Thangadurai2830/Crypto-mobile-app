@@ -1,0 +1,3 @@
+# Production: base dependencies + ASGI server
+-r base.txt
+gunicorn>=21.0,<23.0
